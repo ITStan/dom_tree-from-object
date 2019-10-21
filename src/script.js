@@ -39,5 +39,6 @@ function createTreeFromObject(data) {
     }
     ul.append(li);
   }
+
   return ul;
 }
