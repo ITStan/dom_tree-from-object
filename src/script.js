@@ -1,6 +1,6 @@
 'use strict'
 
-let data = {
+const data = {
   "Рыбы": {
     "форель": {},
     "лосось": {}
@@ -18,7 +18,9 @@ let data = {
   }
 };
 
-createTree(document.getElementById('container'), data);
+const sourceElement = document.getElementById('container');
+
+createTree(sourceElement, data);
 
 function createTree(container, data) {
   container.append(createTreeFromObject(data));
@@ -29,11 +31,11 @@ function createTreeFromObject(data) {
   const ul = document.createElement('ul');
 
   for (const key in data) {
-    const li = document.createElement('li'); // используем рекурсию
+    const li = document.createElement('li');
     li.textContent = key;
 
     if (typeof data[key] === 'object' && Object.keys(data[key]).length !== 0) {
-      li.append(createTreeFromObject(data[key]));
+      li.append(createTreeFromObject(data[key]));   // используем рекурсию
     }
     ul.append(li);
   }
